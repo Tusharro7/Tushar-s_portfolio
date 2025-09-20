@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { ThemeContext } from "./theme/ThemeContext";
 import Typed from "typed.js";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const { darkMode } = useContext(ThemeContext);
@@ -100,16 +101,17 @@ const Hero = () => {
         {/* Buttons */}
         <div className="flex gap-4 justify-center mb-6">
           <motion.a
-            href="#contact"
             className={`px-6 py-3 rounded-xl shadow-lg font-semibold transition-colors duration-2000 ${hireBtn}`}
             whileHover={{ scale: 1.05, y: -3 }}
           >
-            Hire Me
+            <Link to="/contact">Hire me</Link>
           </motion.a>
           <motion.a
             href="https://drive.google.com/file/d/1STmpIk0YdzGf6z9bXNfEsT2FzIVkpr0B/view"
             className={`px-6 py-3 rounded-xl shadow-lg font-semibold border-2 transition-colors duration-2000 ${cvBtn}`}
             whileHover={{ scale: 1.05, y: -3 }}
+            target="_blank"
+
           >
             Download CV
           </motion.a>
