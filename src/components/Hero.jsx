@@ -107,7 +107,7 @@ const Hero = () => {
             Hire Me
           </motion.a>
           <motion.a
-            href=".\src\assets\resume\Tushar_fresher's_React_resume.pdf"
+            href="https://drive.google.com/file/d/1STmpIk0YdzGf6z9bXNfEsT2FzIVkpr0B/view"
             className={`px-6 py-3 rounded-xl shadow-lg font-semibold border-2 transition-colors duration-2000 ${cvBtn}`}
             whileHover={{ scale: 1.05, y: -3 }}
           >
