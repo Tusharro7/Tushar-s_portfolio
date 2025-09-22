@@ -5,7 +5,7 @@ const ProjectsSection = () => {
   const projects = [
     {
       name: "Portfolio",
-      image: "../src/assets/images/portfolio.png",
+      image: "/images/portfolio.png",
       description: [
         "Personal portfolio website built with React, TailwindCSS, and Framer Motion.",
         "Responsive design with dark/light mode toggle.",
@@ -14,7 +14,7 @@ const ProjectsSection = () => {
     },
     {
       name: "E-Commerce Site",
-      image: "../src/assets/images/e1.png",
+      image: "/images/e1.png",
                  
 
       description: [
@@ -25,7 +25,7 @@ const ProjectsSection = () => {
     },
     {
       name: "Weather Detector",
-           image: "../src/assets/images/wd1.png" ,
+           image: "/images/wd1.png" ,
       description: [
         "Weather detection app using OpenWeatherMap API.",
         "Shows live weather, temperature, and location info.",
