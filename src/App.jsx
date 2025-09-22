@@ -1,26 +1,30 @@
 import React from 'react'
 import Navbar from './components/Navbar'
-import { Route, Router, Routes } from 'react-router-dom'
+// import { Route, Router, Routes } from 'react-router-dom'
 import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
+import Footer from './components/Footer'
+import MouseGradient from './components/mouseMoveTracker/MouseGradient'
+
+
 
 function App() {
   return (
+    <>
+    <MouseGradient/>
     <div >    
     <Navbar/>
-    <div>
-      <Routes>
-        <Route path='/' element={<Hero/>}/>
-        <Route path='/About' element={<About/>}/>
-        <Route path='/Skills' element={<Skills/>}/>
-        <Route path='/Projects' element={<Projects/>}/>
-        <Route path='/Contact' element={<Contact/>}/>
-      </Routes>
+    <Hero/>
+    <About/>
+    <Skills/>
+    <Projects/>
+    <Contact/>
+    <Footer/>
     </div>
-    </div>
+    </>
   )
 }
 

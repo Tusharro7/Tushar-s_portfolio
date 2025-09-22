@@ -1,13 +1,15 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { IoMdMenu, IoMdClose } from 'react-icons/io'
 import { BsEmojiSunglasses, BsEmojiSunglassesFill } from "react-icons/bs";
-import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeContext } from "./theme/ThemeContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const { darkMode, setDarkMode } = useContext(ThemeContext); // ✅ Use context instead of local state
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
+  const [activeSection, setActiveSection] = useState("home");
+
+  const menuItems = ["home","about","skills","projects","contact"];
 
   const containerVariants = {
     hidden: { opacity: 0, height: 0 },
@@ -24,12 +26,52 @@ const Navbar = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } }
   };
 
+  // Smooth scroll with navbar offset
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    const navbarHeight = 80; // adjust according to your navbar height
+    if (section) {
+      const top = section.offsetTop - navbarHeight;
+      window.scrollTo({ top, behavior: 'smooth' });
+      setIsOpen(false); // close mobile menu if open
+    }
+  }
+
+  // Intersection Observer to track active section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        threshold: 0.4, // trigger when 40% visible
+        rootMargin: "-100px 0px -100px 0px" // helps detect last section
+      }
+    );
+
+    menuItems.forEach(item => {
+      const section = document.getElementById(item);
+      if (section) observer.observe(section);
+    });
+
+    return () => {
+      menuItems.forEach(item => {
+        const section = document.getElementById(item);
+        if (section) observer.unobserve(section);
+      });
+    }
+  }, []);
+
   return (
     <div className='font-nunito w-full fixed top-0 z-50'>
       {/* Navbar Top */}
       <div className={`flex py-4 px-6 md:px-20 w-full justify-between items-center border-b-2 border-gray-400 rounded-b-3xl transition-colors duration-700
         ${darkMode ? "text-white bg-black/50 backdrop-blur-md" : "text-black bg-white/50 backdrop-blur-md"}`}>
-        
+
         {/* Logo */}
         <div className="p1">
           <h1 className='text-3xl font-medium cursor-pointer text-center'>Tushar™</h1>
@@ -37,16 +79,21 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="p2 hidden md:flex gap-4">
-          {["Home","About","Skills","Projects","Contact"].map(item => (
-            <Link key={item} to={item === "Home" ? "/" : `/${item}`} className='px-4 hover:font-semibold'>
-              {item}
-            </Link>
+          {menuItems.map(item => (
+            <span
+              key={item}
+              className={`px-4 cursor-pointer hover:font-semibold transition-colors ${
+                activeSection === item ? "font-bold text-orange-500" : ""
+              }`}
+              onClick={() => scrollToSection(item)}
+            >
+              {item.charAt(0).toUpperCase() + item.slice(1)}
+            </span>
           ))}
         </div>
 
         {/* Right Section: Theme toggle + Mobile menu */}
         <div className="flex items-center gap-4">
-          {/* Theme Toggle */}
           <button
             onClick={() => setDarkMode(!darkMode)}
             className="p4 rounded-full shadow-md bg-gray-200 dark:bg-gray-800 transition-colors duration-500 hover:scale-110 hover:bg-gray-300 dark:hover:bg-gray-700"
@@ -78,15 +125,16 @@ const Navbar = () => {
             className={`md:hidden shadow-lg px-6 py-4 flex flex-col gap-4 transition-colors duration-500
               ${darkMode ? "bg-black text-white border-gray-700" : "bg-white text-black border-gray-200"}`}
           >
-            {["Home","About","Skills","Projects","Contact"].map(item => (
+            {menuItems.map(item => (
               <motion.div key={item} variants={itemVariants}>
-                <Link
-                  to={item === "Home" ? "/" : `/${item}`}
-                  className="hover:font-semibold cursor-pointer"
-                  onClick={() => setIsOpen(false)}
+                <span
+                  className={`hover:font-semibold cursor-pointer transition-colors ${
+                    activeSection === item ? "font-bold text-orange-400" : ""
+                  }`}
+                  onClick={() => scrollToSection(item)}
                 >
-                  {item}
-                </Link>
+                  {item.charAt(0).toUpperCase() + item.slice(1)}
+                </span>
               </motion.div>
             ))}
           </motion.div>
