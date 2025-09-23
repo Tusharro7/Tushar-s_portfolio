@@ -12,14 +12,14 @@ const Skills = ({ onComplete }) => {
     { name: "HTML", icon: <FaHtml5 size={24} color="#E34F26" /> },
     { name: "CSS", icon: <FaCss3Alt size={24} color="#1572B6" /> },
     { name: "JavaScript", icon: <FaJsSquare size={24} color="#F7DF1E" /> },
-    { name: "Bootstrap", icon: <FaBootstrap size={24} color="#7952B3" /> },
-    { name: "Tailwind CSS", icon: <SiTailwindcss size={24} color="#06B6D4" /> },
   ];
 
   const tools = [
     { name: "VS Code", icon: <VscVscodeInsiders size={24} color="#007ACC" /> },
     { name: "Git", icon: <FaGitAlt size={24} color="#F05032" /> },
     { name: "GitHub", icon: <FaGithub size={24} color={darkMode ? "#fff" : "#000"} /> },
+    { name: "Bootstrap", icon: <FaBootstrap size={24} color="#7952B3" /> },
+    { name: "Tailwind CSS", icon: <SiTailwindcss size={24} color="#06B6D4" /> },
     { name: "React", icon: <FaReact size={24} color="#61DAFB" /> },
   ];
 
