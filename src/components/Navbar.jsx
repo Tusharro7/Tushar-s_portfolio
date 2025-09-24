@@ -26,14 +26,13 @@ const Navbar = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } }
   };
 
-  // Smooth scroll with navbar offset
+  // ✅ Fixed scroll function (works on desktop + mobile)
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
-    const navbarHeight = 80; // adjust according to your navbar height
     if (section) {
-      const top = section.offsetTop - navbarHeight;
-      window.scrollTo({ top, behavior: 'smooth' });
-      setIsOpen(false); // close mobile menu if open
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+      // delay closing menu so scroll starts first
+      setTimeout(() => setIsOpen(false), 300);
     }
   }
 
@@ -48,8 +47,8 @@ const Navbar = () => {
         });
       },
       {
-        threshold: 0.4, // trigger when 40% visible
-        rootMargin: "-100px 0px -100px 0px" // helps detect last section
+        threshold: 0.4,
+        rootMargin: "-100px 0px -100px 0px"
       }
     );
 
@@ -67,7 +66,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className='font-nunito w-full fixed top-0 z-50'>
+    <div className='font-nunito w-full fixed top-0 z-20'>
       {/* Navbar Top */}
       <div className={`flex py-4 px-6 md:px-20 w-full justify-between items-center border-b-2 border-gray-400 rounded-b-3xl transition-colors duration-700
         ${darkMode ? "text-white bg-black/50 backdrop-blur-md" : "text-black bg-white/50 backdrop-blur-md"}`}>
@@ -92,7 +91,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Right Section: Theme toggle + Mobile menu */}
+        {/* Right Section */}
         <div className="flex items-center gap-4">
           <button
             onClick={() => setDarkMode(!darkMode)}
