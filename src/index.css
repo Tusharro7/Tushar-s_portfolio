@@ -17,6 +17,5 @@ body.dark-mode {
 
 html {
    scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* same as navbar height */
 }
 
