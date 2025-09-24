@@ -26,13 +26,17 @@ const Navbar = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } }
   };
 
-  // ✅ Fixed scroll function (works on desktop + mobile)
+  // ✅ Manual offset scroll (works properly on mobile + desktop)
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
-      section.scrollIntoView({ behavior: "smooth", block: "start" });
-      // delay closing menu so scroll starts first
-      setTimeout(() => setIsOpen(false), 300);
+      const navbarHeight = document.querySelector("nav")?.offsetHeight || 80;
+      const top = section.getBoundingClientRect().top + window.scrollY - navbarHeight;
+
+      window.scrollTo({ top, behavior: "smooth" });
+
+      // delay closing menu so scroll isn't interrupted
+      setTimeout(() => setIsOpen(false), 400);
     }
   }
 
