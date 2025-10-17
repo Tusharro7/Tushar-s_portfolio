@@ -26,7 +26,6 @@ const Navbar = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } }
   };
 
-  // ✅ Manual offset scroll (works properly on mobile + desktop)
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
@@ -34,7 +33,9 @@ const Navbar = () => {
       const top = section.getBoundingClientRect().top + window.scrollY - navbarHeight;
 
       window.scrollTo({ top, behavior: "smooth" });
+    setActiveSection(id);
 
+      
       // delay closing menu so scroll isn't interrupted
       setTimeout(() => setIsOpen(false), 400);
     }
