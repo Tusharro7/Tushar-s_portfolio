@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext,  } from "react";
 import { ThemeContext } from "./theme/ThemeContext";
 import ScrollFadeIn from "./scrollfadein/ScrollFadeIn";
 
@@ -54,7 +54,7 @@ const About = () => {
               custom={i}
               className="text-lg md:text-xl"
               onAnimationComplete={() => {
-                if (i === aboutLines.length - 1) handleAboutComplete();
+                // if (i === aboutLines.length - 1);
               }}
             >
               {line}
