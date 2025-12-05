@@ -4,7 +4,7 @@ import ScrollFadeIn from "./scrollfadein/ScrollFadeIn";
 
 const About = () => {
   const { darkMode } = useContext(ThemeContext);
-  const [showEducation, setShowEducation] = useState(false);
+  // const [showEducation, setShowEducation] = useState(false);
 
   const aboutLines = [
     "Hi, I’m Tushar makavana",
@@ -14,25 +14,25 @@ const About = () => {
     "Let’s connect and create something amazing together!",
   ];
 
-  const educationData = [
-    {
-      title: "Diploma in Computer Engineering",
-      cgpa: 8.5,
-      institute: "Gujarat Technological University",
-      year: "2019 - 2022",
-    },
-    {
-      title: "B.E in Information Technology",
-      cgpa: 8.6,
-      institute: "Gujarat Technological University",
-      year: "2022 - 2025",
-    },
-  ];
+  // const educationData = [
+  //   {
+  //     title: "Diploma in Computer Engineering",
+  //     cgpa: 8.5,
+  //     institute: "Gujarat Technological University",
+  //     year: "2019 - 2022",
+  //   },
+  //   {
+  //     title: "B.E in Information Technology",
+  //     cgpa: 8.6,
+  //     institute: "Gujarat Technological University",
+  //     year: "2022 - 2025",
+  //   },
+  // ];
 
-  // Trigger Education after About last line + minimal delay
-  const handleAboutComplete = () => {
-    setTimeout(() => setShowEducation(true), 100); // 0.1s delay
-  };
+  // // Trigger Education after About last line + minimal delay
+  // const handleAboutComplete = () => {
+  //   setTimeout(() => setShowEducation(true), 100); // 0.1s delay
+  // };
 
   return (
     <>
@@ -40,7 +40,7 @@ const About = () => {
       <ScrollFadeIn>
       <section
         id="about"
-        className={`font-nunito relative z-10 flex flex-col items-center justify-start md:justify-center px-6 md:px-20 py-16`}
+        className={`font-nunito relative z-10 flex flex-col items-center justify-start min-h-[80vh] md:justify-center px-6 md:px-20 py-16`}
       > 
 
         <div
@@ -63,7 +63,7 @@ const About = () => {
         </div>
       </section>
 </ScrollFadeIn>
-      {/* Education Section */}
+      {/* Education Section
       {showEducation && (
         <section className="relative z-10 flex flex-col md:flex-row gap-6 px-6 md:px-20 mb-16">
           {educationData.map((edu, i) => (
@@ -84,7 +84,7 @@ const About = () => {
           ))}
         </section>
         
-      )}
+      )} */}
     </>
   );
 };

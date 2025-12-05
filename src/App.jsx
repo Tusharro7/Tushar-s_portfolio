@@ -8,6 +8,7 @@ import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import MouseGradient from './components/mouseMoveTracker/MouseGradient'
+import EducationDetails from './components/EducationDetails'
 
 
 
@@ -21,6 +22,7 @@ function App() {
     <About/>
     <Skills/>
     <Projects/>
+    <EducationDetails/>
     <Contact/>
     <Footer/>
     </div>

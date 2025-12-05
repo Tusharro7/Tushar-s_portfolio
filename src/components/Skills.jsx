@@ -55,8 +55,8 @@ const Skills = ({ onComplete }) => {
         className={`text-center mb-12 ${darkMode ? "text-white" : "text-black"}`}
       >
         {/* <h2 className="text-4xl md:text-3xl font-bold mb-4">Skills</h2> */}
-        <p className="text-lg md:text-xl">
-          Here is the list of technologies and tools I work with:
+        <p className="text-lg capitalize font-bold md:text-xl">
+          Technology known:
         </p>
       </motion.div>
 
