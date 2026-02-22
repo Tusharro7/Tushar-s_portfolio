@@ -22,7 +22,8 @@ const ProjectsSection = () => {
         "Full-stack e-commerce site using React and backend on Glitch.",
         "Features product listing, cart, checkout, and admin dashboard.",
       ],
-      // link: "#",
+      link: "https://ehubtm.netlify.app/",
+      
     },
     {
       name: "Weather Detector",
