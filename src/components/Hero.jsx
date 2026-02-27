@@ -97,7 +97,7 @@ const Hero = () => {
             Hire Me
           </motion.a>
           <motion.a
-            href="https://drive.google.com/file/d/1a_0u_NjJgzb8sbP5WfPcq76bj-2f9tTA/view?usp=sharing"
+            href="https://drive.google.com/file/d/1BAnkToZPN0lSJWWM2Ocu6V4Byifn_I3s/view?usp=sharing"
             target="_blank"
             rel="noreferrer"
             className={`px-6 py-3 rounded-xl shadow-lg font-semibold border-2 transition-colors duration-200 ${cvBtn}`}
